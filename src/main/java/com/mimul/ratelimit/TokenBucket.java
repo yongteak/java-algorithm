@@ -29,10 +29,12 @@ public class TokenBucket extends RateLimiter {
 
   private void refillTokens() {
     final long now = scaledTime();
-    final double elapsedTime = (now - lastRefillTime);
-    int cnt = (int) (elapsedTime * maxRequestPerSec);
-    this.tokens = Math.min(this.tokens + cnt, capacity);
-    lastRefillTime = now;
+    if (now > this.lastRefillTime) {
+      final double elapsedTime = (now - this.lastRefillTime);
+      int refill = (int) (elapsedTime * this.maxRequestPerSec);
+      this.tokens = Math.min(this.tokens + refill, this.capacity);
+      this.lastRefillTime = now;
+    }
   }
 
   private long scaledTime() {
