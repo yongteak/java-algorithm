@@ -1,4 +1,4 @@
-package com.mimul.ratelimit;
+package work;
 
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;

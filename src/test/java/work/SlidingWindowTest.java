@@ -1,4 +1,4 @@
-package com.mimul.ratelimit;
+package work;
 
 import com.google.common.util.concurrent.Uninterruptibles;
 import lombok.extern.slf4j.Slf4j;
