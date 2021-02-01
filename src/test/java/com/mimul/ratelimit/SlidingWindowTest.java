@@ -11,11 +11,12 @@ public class SlidingWindowTest {
 
 	@Test
 	public void testSlidingWindow() throws Exception {
-		RateLimiter slidingWindow = new SlidingWindow(10, 1000 * 1000);
-		for (int i = 0; i < 20; i++) {
+//		60초당 6개
+		SlidingWindow slidingWindow = new SlidingWindow(6, 60 * 1000);
+		for (int i = 0; i < 120; i++) {
 			boolean result = slidingWindow.allow();
-			Uninterruptibles.sleepUninterruptibly(10, TimeUnit.MILLISECONDS);
-			if(!result)
+			Uninterruptibles.sleepUninterruptibly(1000, TimeUnit.MILLISECONDS);
+			if(result)
 				log.info("{}, result={}", i, result);
 		}
 	}
